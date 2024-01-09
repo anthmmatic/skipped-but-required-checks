@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    if: ${{ inputs.should_skip == 'true' }}
+    if: ${{ !inputs.should_skip }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "done"
