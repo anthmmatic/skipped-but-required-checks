@@ -1,0 +1,13 @@
+on:
+  workflow_call:
+    inputs:
+      should_skip:
+        required: true
+        type: boolean
+
+jobs:
+  build:
+    if: ${{ inputs.should_skip }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "done"
