@@ -21,4 +21,4 @@ jobs:
     needs: init
     uses: ./.github/workflows/reusable.yml
     with:
-      should_skip: ${{ needs.init.outputs.out1 }}
+      should_skip: ${{ needs.init.outputs.out1 == 'true' }}
