@@ -1,0 +1,21 @@
+on:
+  workflow_dispatch:
+    inputs:
+      flag:
+        description: 'Should skip reusable caller?'
+        required: true
+        type: boolean
+
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    outputs:
+      out1: ${{ inputs.flag }}
+    steps:
+      - run: echo "done"
+    
+  job-name:
+    needs: init
+    uses: ./.github/workflows/reusable.yml
+    with:
+      should_skip: ${{ needs.init.outputs.out1 }}
