@@ -3,11 +3,11 @@ on:
     inputs:
       should_skip:
         required: true
-        type: boolean
+        type: string
 
 jobs:
   build:
-    if: ${{ !inputs.should_skip }}
+    if: ${{ inputs.should_skip != 'true' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "done"
